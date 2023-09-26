@@ -5,3 +5,90 @@
   --text: hsla(0, 0%, 100%, 0.88);
 }
 
+/* Headers */
+.headerDiv{
+  background-color: rgba(160, 149, 227, 1);
+}
+
+.headerButton{
+  height: 30px;
+
+}
+
+.headerButtonContainer{
+  display: flex;
+  justify-content: space-around;
+  max-width: 20%;
+}
+
+/* Dashboard */
+
+#dashboardRow1{
+  background-color: rgb(116, 152, 199);
+  display:flex;
+  min-height: 500px;
+  justify-content: space-around;
+}
+
+#dashboard1{
+  display: flex;
+  min-height: 35%;
+  background-color: rgba(145, 225, 187, 1);
+  min-width: 30%;  
+  justify-content: center;
+  align-items: center;
+  
+}
+
+#testDashboard1{
+  display:flex;
+  flex-grow: 1;
+  background-color: rgba(255, 203, 222, 1);
+  border: 10%;
+}
+
+#inputDashboard1{
+  display:flex;
+  height: 250px;
+  flex-grow: 9;
+  background-color: rgba(160, 149, 227, 1);
+}
+
+#dashboard2{
+  display: flex;
+  min-height: 35%;
+  min-width: 60%;
+  background-color: pink;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border: #fff;
+  padding: 20px;
+}
+
+#dashboardRow2{
+  background-color: rgb(116, 152, 199);
+  display:flex;
+  justify-content: space-around;
+}
+
+#dashboard3{
+  display: flex;
+  min-height: 350px;
+  min-width: 60%;
+  background-color: pink;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border: #fff;
+  padding: 20px;
+}
+
+#dashboard4{
+  display: flex;
+  min-height: 350px;
+  background-color: blue;
+  min-width: 30%;  
+  justify-content: center;
+  align-items: center;
+}
