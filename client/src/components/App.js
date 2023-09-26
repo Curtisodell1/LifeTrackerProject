@@ -5,7 +5,7 @@ import DayView from "./DayView.js";
 import Home from "./Home.js"
 import Header from "./Header.js"
 import Info from "./Info.js"
-import { Router } from "react-router-dom/cjs/react-router-dom.min.js";
+
 
 function App() {
   return(

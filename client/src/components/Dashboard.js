@@ -10,7 +10,11 @@ function Dashboard(){
                     </div>
                 </div>
                 <span id="dashboard2">
-                <div id="inputDashboard2">hi</div>
+                <div>
+                    <div id="testDashboard1">Test </div>
+                    <div id="inputDashboard1">Test Text</div>
+                </div>
+                <div id="inputDashboard2"></div>
                 </span>
             </div>
             <div >
@@ -20,10 +24,16 @@ function Dashboard(){
             </div>
             <div id="dashboardRow2">
                 <span id="dashboard3">
-                    <div id="inputDashboard3">Test Text</div>
+                    <div>
+                        <div id="testDashboard1">Test </div>
+                        <div id="inputDashboard1">Test Text</div>
+                    </div>
                 </span>
                 <span id="dashboard4">
-                <div id="inputDashboard4">hi</div>
+                    <div>
+                        <div id="testDashboard1">Test </div>
+                        <div id="inputDashboard1">Test Text</div>
+                    </div>
                 </span>
             </div>
         </div>
