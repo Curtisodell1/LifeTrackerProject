@@ -15,9 +15,9 @@ function Header(){
                 <button className="headerButton">Info</button>
                 </Link>
             </span>
-            <span className="loginButton">
+            <span className="loginButtonContainer">
             <Link to = "/login">
-            <button>login</button>
+            <button className="loginButton">login</button>
             </Link>
             </span>
         </div>

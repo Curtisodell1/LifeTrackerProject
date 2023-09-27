@@ -1,4 +1,4 @@
-:root {
+a:root {
   --bg: #282c34;
   --header: #fff;
   --link: #61dafb;
@@ -15,21 +15,30 @@ body{
   background-color: rgba(160, 149, 227, 1);
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  box-shadow:10px lightblue;
 }
 
 .headerButton{
   height: 30px;
+  margin: 5px;
 }
 
 .headerButtonContainer{
   display: flex;
   justify-content: space-around;
-  max-width: 20%;
+  margin: 10px;
+}
+
+.loginButtonContainer{
+  display: flex;
+  justify-self: center;
+  align-content: center;
 }
 
 .loginButton{
-  display: flex;
-  justify-self: self-end;
+  margin: 10px;
+  height: 30px;
 }
 
 /* Dashboard */
@@ -197,7 +206,6 @@ border-radius: 29px;
   border-width: #61dafb 20px;
   margin: 0;
 }
-
 
 .entryDivs{
   display: flex;
