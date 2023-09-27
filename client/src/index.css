@@ -5,14 +5,20 @@
   --text: hsla(0, 0%, 100%, 0.88);
 }
 
+body{
+  margin:0%;
+  padding: 0%;
+}
+
 /* Headers */
 .headerDiv{
   background-color: rgba(160, 149, 227, 1);
+  display: flex;
+  flex-direction: row;
 }
 
 .headerButton{
   height: 30px;
-
 }
 
 .headerButtonContainer{
@@ -21,12 +27,28 @@
   max-width: 20%;
 }
 
+.loginButton{
+  display: flex;
+  justify-self: self-end;
+}
+
 /* Dashboard */
+#dashboardPage{
+  background: #04AA6D;
+  height: 100vh;
+  width: 100vw;
+}
+
+.dashboard{
+margin-top: 3%;
+border-radius: 29px;
+}
 
 #dashboardRow1{
   display:flex;
-  min-height: 500px;
+  height: 45vh;
   justify-content: space-around;
+
 }
 
 #dashboard1{
@@ -35,21 +57,19 @@
   background-color: rgba(145, 225, 187, 1);
   min-width: 30%;  
   justify-content: center;
-  align-items: center;
-  
+  align-items: center; 
 }
 
 #testDashboard1{
   display:flex;
   flex-grow: 1;
   background-color:rgba(160, 149, 227, 1);
-  border: 10%;
 }
 
 #inputDashboard1{
   display:flex;
-  height: 250px;
   flex-grow: 9;
+  
   background-color:  rgba(255, 203, 222, 1);
 }
 
@@ -61,12 +81,11 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  border: #fff;
-  padding: 20px;
 }
 
 #dashboardRow2{
   display:flex;
+  height: 45vh;
   justify-content: space-around;
 }
 
@@ -78,15 +97,13 @@
   text-align: center;
   justify-content: center;
   align-items: center;
-  border: #fff;
-  padding: 20px;
 }
 
 #dashboard4{
   display: flex;
   min-height: 350px;
-  background-color: rgba(144, 191, 234, 1);
   min-width: 30%;  
+  background-color: rgba(144, 191, 234, 1);
   justify-content: center;
   align-items: center;
 }
@@ -94,25 +111,104 @@
 /* DayView */
 
 .dayPage{
-  background-color: ;
+  display: flex;
+  background-color: #04AA6D;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #04AA6D;
+  cursor: pointer;
 }
 
 .inputContainer{
-  background-color: beige;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 30vw;
+  height: 85vh;
+  background-color: rgba(144, 191, 234, 1);
+  border-radius: 25px;
 }
 
 .feelingHeadline{
-  background-color: black;
 }
 
 .feelingForm{
-  background-color: cornsilk;
+  background-color: rgba(144, 191, 234, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-content: space-evenly;
 }
 
 .activityLabel{
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  font-size: 20px;
+}
 
+.choiceLabels{
+  font-size: 20px;
 }
 
 .radioButton{
+  height: 20px;
+}
 
+.yes{
+  border-radius: 7px;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: bisque;
+  display: flex;
+  border-width: #61dafb 20px;
+  margin: 0;
+}
+
+
+.entryDivs{
+  display: flex;
+  flex-direction: row;
+  align-content: space-evenly;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+#inputField{
+  display: flex;
+  justify-content: center;
+  padding: 5px 7px;
 }
