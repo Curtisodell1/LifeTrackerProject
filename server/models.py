@@ -123,13 +123,19 @@ class User(db.Model, SerializerMixin):
         return self._password_hash
 
     @password_hash.setter
+    # def password_hash(self, password):
+    #     from app import bcrypt
+    #     if type(password) is str and len(password) in range ( 5, 16):
+    #         password_has = bcrypt.generate_password_hash(password.encode('utf-8'))
+    #         self._password_hash = password.decode('utf-8')
+    #     else:
+    #         self.validation_errors.append("Password must be 5 and 15 characters long. ")
     def password_hash(self, password):
         from app import bcrypt
-        if type(password) is str and len(password) in range ( 5, 16):
-            password_has = bcrypt.generate_password_hash(password.encode('utf-8'))
-            self._password_hash = password.decode('utf-8')
+        if type(password) is str and len(password) in range(5, 16):
+            self._password_hash = bcrypt.generate_password_hash(password.encode('utf-8')).decode('utf-8')
         else:
-            self.validation_errors.append("Password must be 5 and 15 characters long. ")
+            self.validation_errors.append("Password must be 5 to 15 characters long.")
 
     def authenticate ( self, password ) :
         from app import bcrypt
