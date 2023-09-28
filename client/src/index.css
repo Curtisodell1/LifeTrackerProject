@@ -129,6 +129,14 @@ border-radius: 29px;
   flex-wrap: wrap;
 }
 
+
+
+
+.slideContainer {
+  width: 100%;
+}
+
+
 .slider {
   -webkit-appearance: none;
   width: 100%;
