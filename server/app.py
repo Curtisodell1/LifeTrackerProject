@@ -8,7 +8,7 @@ from flask import Flask, request, session
 from flask_restful import Api, Resource
 from flask_migrate import Migrate
 from flask_cors import CORS
-
+from flask import Flask, request, make_response
 # Local imports
 
 from config import app, db, api
@@ -17,7 +17,7 @@ from config import app, db, api
 from models import Activity, User, Feeling, Day
 
 # Views go here!
-
+validation_errors = {"errors":["validation errors"]}
 
 
 
@@ -75,50 +75,68 @@ class Activities(Resource):
 
 class Feelings(Resource):
     def get(self):
-        return Feeling.all(), 200
+        feelings = Feeling.query.all()
+        feelings_dict = [ feeling.to_dict() for feeling in feelings]
+        return make_response(feelings_dict, 200)
+        
 
     def post(self):
         rq = request.get_json
         try:
             new_feeling = Feeling(
-                morning_feeling = rq['morning_feeling'],
-                afternoon_feeling = rq['afternoon_feeling'],
-                evening_feeling = rq['evening_feeling'],
-                description = rq['description']
+                morning_feeling = rq.get('morning_feeling'),
+                afternoon_feeling = rq.get('afternoon_feeling'),
+                evening_feeling = rq.get('evening_feeling'),
+                description = rq.get('description')
             )
-            if new_feeling.validion_errors:
-                raise ValueError
             db.session.add(new_feeling)
             db.session.commit()
-            return new_feeling.to_dict(), 201
+            return make_response(new_feeling.to_dict(), 201)
         except:
-            errors = new_feeling.validation_errors
-            new_feeling.clear_validation_errors()
-            return {'errors': 'errors'}, 422
+            return make_response(validation_errors, 400)
         
 api.add_resource(Feelings, '/feelings')
 
+class Activities(Resource):
+    def get(self):
+        activities = Activity.query.all()
+        activities_dict = [activity.to_dict() for activity in activities]
+        return make_response( activities_dict, 200 )
+    
+    def post(self):
+        rq = request.get_json()
+        try:
+            new_activity = Activity(
+                activity = rq.get('activity'),
+                activity_status = rq.get('activity_status'),
+
+            )
+            db.session.add(new_activity)
+            db.session.commit()
+            return make_response(new_activity.to_dict(), 201)
+        except:
+            return make_response(validation_errors, 400)
+        
+api.add_resource( Activities, '/activities')
 
 class Days(Resource):
     def get(self):
-        return Day.all(), 200
-
-    def post(self):
-        rq = request.get_json
+        days = Day.query.all()
+        days_dict = [day.to_dict() for day in days ]
+        return make_response( days_dict, 200)
+      
+def post(self):
+        rq = request.get_json()
         try:
-            new_day = Day(
-                
+            new_day = Activity(
+                average_day_feeling = rq.get('average_day_feeling')
+
             )
-            if new_day.validion_errors:
-                raise ValueError
             db.session.add(new_day)
             db.session.commit()
-            return new_day.to_dict(), 201
+            return make_response(new_day.to_dict(), 201)
         except:
-            errors = new_day.validation_errors
-            new_day.clear_validation_errors()
-            return {'errors': 'errors'}, 422
-
+            return make_response(validation_errors, 400)
 
 
 api.add_resource(Days, '/days')

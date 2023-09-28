@@ -17,8 +17,10 @@ class Activity(db.Model, SerializerMixin):
     activity = db.Column(db.String)
     activity_status = db.Column(db.String)
 
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
-    # serialize_rules = ('-days.activity',)
+    serialize_rules = ('-days.activity',)
     
 
     @validates('activity_status')
@@ -41,7 +43,11 @@ class Feeling(db.Model, SerializerMixin):
     evening_feeling = db.Column(db.Integer)
     description = db.Column(db.String)
 
-    # serialize_rules = ('-days.feeling',)
+
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, onupdate=db.func.now())
+
+    serialize_rules = ('-days.feeling',)
     
     @validates('morning_feeling')
     def validate_feeling(self, db_column, morning_feeling):
@@ -78,8 +84,13 @@ class Day(db.Model, SerializerMixin):
     __tablename__ = "days"
     # every day will have a feeling and activity
     id = db.Column(db.Integer, primary_key=True)
+    # average_day_feeling = db.Column(db.Integer)
+    # daily_activity_point = db.Column(db.Integer)
     feeling_id = db.Column(db.Integer, db.ForeignKey("feelings.id"))
     activity_id = db.Column(db.Integer, db.ForeignKey("activities.id"))
+
+    created_at = db.Column(db.DateTime, server_default=db.func.now())
+    updated_at = db.Column(db.DateTime, onupdate=db.func.now())
 
 
     # serialize_rules = ('activities.days','-feeling.days')
@@ -97,6 +108,10 @@ class User(db.Model, SerializerMixin):
     created_at = db.Column(db.DateTime, server_default = db.func.now())
     updated_at = db.Column(db.DateTime, onupdate = db.func.now())
     
+
+
+
+    serialize_rules = ( '-_password_hash', )
     validation_errors = []
 
     @classmethod
