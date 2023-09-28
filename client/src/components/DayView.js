@@ -1,17 +1,19 @@
 import React, {useState} from "react"
 
 function DayView(){
-    const sliderValue = document.getElementById("myRange").value    
-
+    
+    
     const [note, setNote] = useState("")
     const [walk, setWalk] = useState(0)
     const [project, setProject] = useState (0)
     const [other, setOther] = useState (0)
     const [happiness, setHappiness] = useState (5)
 
+    
+
     function handleSubmit(e) {
         e.preventDefault()
-        console.log(note, walk, project, other, sliderValue)
+        console.log(note, walk, project, other, happiness)
         handleReset()
     }
     function handleReset(){
@@ -28,13 +30,14 @@ function DayView(){
                 <form onSubmit={handleSubmit} className="feelingForm">
                     <h1 className="feelingHeadLine">How are you feeling?</h1>
                     <div class="slideContainer">
-                    <label for="volume">Happiness Score</label>
+                    <label for="slider">Happiness Score</label>
                     <input 
-                    onChange={(e) => setHappiness(e)}
+                    onChange={(e) => setHappiness(document.getElementById("happyMeter").value)}
                     type="range" 
                     class="slider" 
-                    id="myRange"
-                    min="1" max="10" />
+                    id="happyMeter"
+                    min="1" max="10" 
+                    />
                     </div>
                         <div>
                             <label className="activityLabel">Did you go for a walk?</label>
@@ -57,7 +60,7 @@ function DayView(){
                                     <span className="yes">
                                     <label className="choiceLabels"> Yes!</label>
                                     <input 
-                                    onClick={(e) => setProject(1)}
+                                    onClick={() => setProject(1)}
                                     className="radioButton" 
                                     type="radio" 
                                     name="work"/>
