@@ -3,7 +3,10 @@
 function Home(){
     return ( 
         <div>
-        <h1>Hi I'm Home Page</h1>
+            
+        <h1>Improvement happens one day at a time!</h1>
+
+
         </div>
     )
 }
