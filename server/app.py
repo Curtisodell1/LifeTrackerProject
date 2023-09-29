@@ -14,7 +14,7 @@ from flask import Flask, request, make_response
 from config import app, db, api
 # Add your model imports
 
-from models import Activity, User, Feeling, Day
+from models import Entry, User
 
 # Views go here!
 validation_errors = {"errors":["validation errors"]}
@@ -67,79 +67,44 @@ class Logout ( Resource ) :
         session[ 'user_id' ] = None
         return {}, 204
 
-class Activities(Resource):
-    def get(self):
-        return Activity.all(), 200
-    
+
     
 
-class Feelings(Resource):
+class Entries(Resource):
     def get(self):
-        feelings = Feeling.query.all()
-        feelings_dict = [ feeling.to_dict() for feeling in feelings]
-        return make_response(feelings_dict, 200)
-        
-
-    def post(self):
-        rq = request.get_json
-        try:
-            new_feeling = Feeling(
-                morning_feeling = rq.get('morning_feeling'),
-                afternoon_feeling = rq.get('afternoon_feeling'),
-                evening_feeling = rq.get('evening_feeling'),
-                description = rq.get('description')
-            )
-            db.session.add(new_feeling)
-            db.session.commit()
-            return make_response(new_feeling.to_dict(), 201)
-        except:
-            return make_response(validation_errors, 400)
-        
-api.add_resource(Feelings, '/feelings')
-
-class Activities(Resource):
-    def get(self):
-        activities = Activity.query.all()
-        activities_dict = [activity.to_dict() for activity in activities]
-        return make_response( activities_dict, 200 )
+        entries = Entry.query.all()
+        entries_dict = [entry.to_dict() for entry in entries]
+        return make_response( entries_dict, 200 )
     
     def post(self):
         rq = request.get_json()
         try:
-            new_activity = Activity(
-                activity = rq.get('activity'),
-                activity_status = rq.get('activity_status'),
-
+            new_entry = Entry(
+                feeling = rq.get('feeling'),
+                description = rq.get('description'),
+                walk = rq.get('walk'),
+                read = rq.get('read'),
+                project = rq.get('project')
             )
-            db.session.add(new_activity)
+            db.session.add(new_entry)
             db.session.commit()
-            return make_response(new_activity.to_dict(), 201)
+            return make_response(new_entry.to_dict(), 201)
         except:
             return make_response(validation_errors, 400)
         
-api.add_resource( Activities, '/activities')
+api.add_resource( Entries, '/entries')
 
-class Days(Resource):
+class User(Resource):
     def get(self):
-        days = Day.query.all()
-        days_dict = [day.to_dict() for day in days ]
-        return make_response( days_dict, 200)
-      
-def post(self):
-        rq = request.get_json()
-        try:
-            new_day = Activity(
-                average_day_feeling = rq.get('average_day_feeling')
+        entries = Entry.query.all()
+        entries_dict = [entry.to_dict() for entry in entries]
+        return make_response( entries_dict, 200 )
+    
+# class EntryById(Resource):
+#     def get(self, id ):
+#         entry = Entry.query.filter_by(id=id).first()
+#         if 
 
-            )
-            db.session.add(new_day)
-            db.session.commit()
-            return make_response(new_day.to_dict(), 201)
-        except:
-            return make_response(validation_errors, 400)
-
-
-api.add_resource(Days, '/days')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
