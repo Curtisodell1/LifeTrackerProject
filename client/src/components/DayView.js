@@ -41,7 +41,7 @@ function DayView(){
         
         console.log(note, walk, project, other, happiness)
 
-
+        
         handleReset()
     }
     function handleReset(){
