@@ -41,6 +41,47 @@ body{
   height: 30px;
 }
 
+/* Login */
+.loginPage{
+    display: flex;
+    background-color: #04AA6D;
+    height: 100vh;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.loginContainer{
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: start;
+  flex-wrap: wrap;
+  width: 30vw;
+  height:35vh;
+  background-color: rgba(248, 235, 125, 1);
+  border-radius: 25px;
+  border-color:rgba(223, 148, 175, 1) ;
+  margin-top: 10%;
+}
+
+.loginBoxes{
+  display: flex;
+  flex-direction: row;
+  align-content: space-evenly;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+
+.loginForm{
+    background-color: rgba(144, 191, 234, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start ;
+    align-content:flex-start;
+}
+
 /* Dashboard */
 #dashboardPage{
   background: #04AA6D;

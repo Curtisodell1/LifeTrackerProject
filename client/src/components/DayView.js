@@ -2,18 +2,46 @@ import React, {useState} from "react"
 
 function DayView(){
     
-    
     const [note, setNote] = useState("")
     const [walk, setWalk] = useState(0)
     const [project, setProject] = useState (0)
     const [other, setOther] = useState (0)
     const [happiness, setHappiness] = useState (5)
 
+    // const entry = useFormik({
+    //     initialValues: {
+    //         name:'',
+    //         email:'',
+    //         password:''
+    //     },
+    //     validationSchema: formSchema,
+    //     onSubmit: (values) => {
+    //         fetch(signUp?'/signup':'/login',{
+    //             method: "POST",
+    //             headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //             body: JSON.stringify(values, null, 2),
+    //         })
+    //         .then(res => {
+    //         if(res.ok){
+    //             res.json().then(user => {
+    //                 updateUser(user)
+    //                 history.push('/')
+    //             })
+    //         } else 
+    //             res.json().then(console.log)
+    //         })
+    //     }
+    //     })
     
-
     function handleSubmit(e) {
         e.preventDefault()
+        
+        
         console.log(note, walk, project, other, happiness)
+
+
         handleReset()
     }
     function handleReset(){
