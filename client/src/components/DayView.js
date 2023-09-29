@@ -15,6 +15,7 @@ function DayView() {
     function handleSubmit(e) {
         e.preventDefault();
         console.log(note, walk, project, other, happiness)
+
         fetch(`http://127.0.0.1:5555/entries`, {
             method: "POST",
             headers: {
@@ -24,6 +25,7 @@ function DayView() {
         })
             .then((r) => r.json())
             .then((data) => history.push(`/entries/${data.id}`));
+
         handleReset()
     }
     const [note, setNote] = useState("")
